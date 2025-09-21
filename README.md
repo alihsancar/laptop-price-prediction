@@ -25,6 +25,14 @@ Uygulama canlı olarak test edilebilir:
 http://localhost:8000
 ```
 
+##  Ekran Görüntüleri
+
+###  Ana Sayfa - Masaüstü Görünüm
+![Ana Sayfa](assets/screenshots/1.png)
+
+###  Ana Sayfa - Masaüstü Görünüm
+![Ana Sayfa](assets/screenshots/2.png)
+
 ##  Veri Seti
 
 Proje, 1273 laptop verisinden oluşan kapsamlı bir veri seti kullanır:
