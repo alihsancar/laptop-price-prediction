@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>36 Computer - AI Destekli Laptop Fiyat Tahmini</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .logo i {
+            font-size: 3rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .ai-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .result-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .result-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .price-display {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .price-label {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .ai-features {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            margin-top: 40px;
+        }
+
+        .features-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f0ff 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .success-message {
+            background: #e8f5e8;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .price-display {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-laptop"></i>
+                36 Computer
+            </div>
+            <div class="subtitle">Teknoloji Dünyasının Güvenilir Adresi</div>
+            <div class="ai-badge">
+                <i class="fas fa-robot"></i> AI Destekli Fiyat Tahmini
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="form-container">
+                <h2 class="form-title">Laptop Özelliklerini Girin</h2>
+                <form id="predictionForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="Company">Marka</label>
+                            <select id="Company" name="Company" required>
+                                <option value="">Marka Seçin</option>
+                                <option value="Acer">Acer</option>
+                                <option value="Apple">Apple</option>
+                                <option value="Asus">Asus</option>
+                                <option value="Chuwi">Chuwi</option>
+                                <option value="Dell">Dell</option>
+                                <option value="Fujitsu">Fujitsu</option>
+                                <option value="Google">Google</option>
+                                <option value="HP">HP</option>
+                                <option value="Huawei">Huawei</option>
+                                <option value="LG">LG</option>
+                                <option value="Lenovo">Lenovo</option>
+                                <option value="MSI">MSI</option>
+                                <option value="Mediacom">Mediacom</option>
+                                <option value="Microsoft">Microsoft</option>
+                                <option value="Razer">Razer</option>
+                                <option value="Samsung">Samsung</option>
+                                <option value="Toshiba">Toshiba</option>
+                                <option value="Vero">Vero</option>
+                                <option value="Xiaomi">Xiaomi</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="TypeName">Laptop Tipi</label>
+                            <select id="TypeName" name="TypeName" required>
+                                <option value="">Tip Seçin</option>
+                                <option value="2 in 1 Convertible">2 in 1 Convertible</option>
+                                <option value="Gaming">Gaming</option>
+                                <option value="Netbook">Netbook</option>
+                                <option value="Notebook">Notebook</option>
+                                <option value="Ultrabook">Ultrabook</option>
+                                <option value="Workstation">Workstation</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="Ram">RAM (GB)</label>
+                            <select id="Ram" name="Ram" required>
+                                <option value="">RAM Seçin</option>
+                                <option value="4">4 GB</option>
+                                <option value="8">8 GB</option>
+                                <option value="16">16 GB</option>
+                                <option value="32">32 GB</option>
+                                <option value="64">64 GB</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Weight">Ağırlık (kg)</label>
+                            <input type="number" id="Weight" name="Weight" step="0.1" min="0.5" max="5" placeholder="Örn: 1.5" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="TouchScreen">Dokunmatik Ekran</label>
+                            <select id="TouchScreen" name="TouchScreen" required>
+                                <option value="">Seçin</option>
+                                <option value="0">Hayır</option>
+                                <option value="1">Evet</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Ips">IPS Panel</label>
+                            <select id="Ips" name="Ips" required>
+                                <option value="">Seçin</option>
+                                <option value="0">Hayır</option>
+                                <option value="1">Evet</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="Ppi">Piksel Yoğunluğu (PPI)</label>
+                            <input type="number" id="Ppi" name="Ppi" step="0.1" min="50" max="300" placeholder="Örn: 141" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Cpu_brand">İşlemci Markası</label>
+                            <select id="Cpu_brand" name="Cpu_brand" required>
+                                <option value="">İşlemci Seçin</option>
+                                <option value="AMD Processor">AMD Processor</option>
+                                <option value="Intel Core i3">Intel Core i3</option>
+                                <option value="Intel Core i5">Intel Core i5</option>
+                                <option value="Intel Core i7">Intel Core i7</option>
+                                <option value="Other Intel Processor">Other Intel Processor</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="HDD">HDD Kapasitesi (GB)</label>
+                            <select id="HDD" name="HDD" required>
+                                <option value="">HDD Seçin</option>
+                                <option value="0">Yok</option>
+                                <option value="128">128 GB</option>
+                                <option value="256">256 GB</option>
+                                <option value="500">500 GB</option>
+                                <option value="1000">1 TB</option>
+                                <option value="2000">2 TB</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="SSD">SSD Kapasitesi (GB)</label>
+                            <select id="SSD" name="SSD" required>
+                                <option value="">SSD Seçin</option>
+                                <option value="0">Yok</option>
+                                <option value="128">128 GB</option>
+                                <option value="256">256 GB</option>
+                                <option value="512">512 GB</option>
+                                <option value="1000">1 TB</option>
+                                <option value="2000">2 TB</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="Gpu_brand">Ekran Kartı Markası</label>
+                            <select id="Gpu_brand" name="Gpu_brand" required>
+                                <option value="">GPU Seçin</option>
+                                <option value="AMD">AMD</option>
+                                <option value="Intel">Intel</option>
+                                <option value="Nvidia">Nvidia</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Os">İşletim Sistemi</label>
+                            <select id="Os" name="Os" required>
+                                <option value="">OS Seçin</option>
+                                <option value="Mac">Mac</option>
+                                <option value="Others">Others</option>
+                                <option value="Windows">Windows</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-calculator"></i> Fiyat Tahmini Yap
+                    </button>
+                </form>
+
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>AI tahmin yapıyor...</p>
+                </div>
+
+                <div class="error-message" id="errorMessage"></div>
+                <div class="success-message" id="successMessage"></div>
+            </div>
+
+            <div class="result-container">
+                <h2 class="result-title">Tahmin Edilen Fiyat</h2>
+                <div class="price-display" id="predictedPrice">$0</div>
+                <div class="price-label">Tahmini Market Fiyatı</div>
+                <div style="margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #f8f9ff 0%, #e8f0ff 100%); border-radius: 15px;">
+                    <h3 style="color: #667eea; margin-bottom: 15px;">
+                        <i class="fas fa-info-circle"></i> AI Tahmin Sistemi
+                    </h3>
+                    <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">
+                        Makine öğrenmesi algoritmaları kullanarak, binlerce laptop verisi analiz edilerek 
+                        en doğru fiyat tahmini yapılmaktadır. Tahminler piyasa koşullarına göre güncellenmektedir.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ai-features">
+            <h2 class="features-title">Neden 36 Computer?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="feature-title">AI Destekli Tahmin</div>
+                    <div class="feature-desc">Gelişmiş makine öğrenmesi algoritmaları ile en doğru fiyat tahminleri</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="feature-title">Gerçek Zamanlı Analiz</div>
+                    <div class="feature-desc">Piyasa verilerini anlık olarak analiz ederek güncel fiyatlar</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="feature-title">Güvenilir Sonuçlar</div>
+                    <div class="feature-desc">Binlerce laptop verisi ile eğitilmiş %95+ doğruluk oranı</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="feature-title">Hızlı Tahmin</div>
+                    <div class="feature-desc">Saniyeler içinde detaylı fiyat analizi ve öneriler</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('predictionForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {};
+            
+            // Form verilerini topla
+            for (let [key, value] of formData.entries()) {
+                if (key === 'Ram' || key === 'HDD' || key === 'SSD' || key === 'TouchScreen' || key === 'Ips') {
+                    data[key] = parseInt(value);
+                } else if (key === 'Weight' || key === 'Ppi') {
+                    data[key] = parseFloat(value);
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            // Loading göster
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+            
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    // Başarılı tahmin
+                    const price = result.Prediction;
+                    document.getElementById('predictedPrice').textContent = `$${Math.round(price).toLocaleString()}`;
+                    document.getElementById('successMessage').textContent = `Tahmin başarıyla tamamlandı!`;
+                    document.getElementById('successMessage').style.display = 'block';
+                } else {
+                    // Hata durumu
+                    document.getElementById('errorMessage').textContent = result.detail || 'Bir hata oluştu';
+                    document.getElementById('errorMessage').style.display = 'block';
+                }
+            } catch (error) {
+                document.getElementById('errorMessage').textContent = 'Sunucuya bağlanırken hata oluştu';
+                document.getElementById('errorMessage').style.display = 'block';
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
